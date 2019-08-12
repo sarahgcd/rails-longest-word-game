@@ -1,0 +1,20 @@
+<h1>New game</h1>
+<!-- <p><%= @letters %></p> -->
+
+<ul class="d-flex flex-row bd-highlight mb-6">
+<% @letters.each do |letter| %>
+  <li class="border border-light pl-3 pr-3 pb-2 pt-2 mr-3"><%= letter.capitalize %></li>
+<% end %>
+</ul>
+
+
+<h3>What is the longest word you can find ?</h3>
+<form class="form-inline mx-sm-3" action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="text" class="form-control" name="user_input" placeholder="Your word">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Play</button>
+</form>
